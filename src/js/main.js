@@ -11,6 +11,7 @@ if (clearBtn) {
 async function obj() {
     let response = await fetch('./dist/json/items.json');
     let jsonFile = await response.json();
+    //MAIN PAGE
     if (mainHeader.textContent.toLowerCase() === 'italian specialities') {
         for (item of jsonFile) {
             if (item.id === '1111' || item.id === '1112' || item.id === '1113' || item.id === '1114') {
@@ -40,7 +41,7 @@ async function obj() {
             }
         }
     }
-
+    // SPECIFICS
     if (mainHeader.textContent.toLowerCase() === 'main dishes' || mainHeader.textContent.toLowerCase() === 'salad' || mainHeader.textContent.toLowerCase() === 'drinks') {
         let nthChild = 1;
         let type;
@@ -85,29 +86,33 @@ async function obj() {
         }
         nthChild = 1;
     }
-
+    // ORDER
     if (mainHeader.textContent.toLowerCase() === 'your order') {
         if (localStorage.order) {
             let order = orderToObject(localStorage.order);
             for (let pos in order) {
                 for (item of jsonFile) {
                     if (item.id === pos) {
+                        let imageWrapper = document.createElement('div');
                         let itemWrapper = document.createElement('div');
                         let itemName = document.createElement('h4');
                         let itemInfo = document.createElement('p');
                         let itemPrice = document.createElement('h6');
                         let itemImage = document.createElement('img');
 
-                        itemWrapper.appendChild(itemImage);
+                        imageWrapper.appendChild(itemImage);
+                        itemWrapper.appendChild(imageWrapper);
                         itemWrapper.appendChild(itemName);
                         itemWrapper.appendChild(itemInfo);
                         itemWrapper.appendChild(itemPrice);
+
+                        itemPrice.classList.add('item-price');
 
                         itemName.textContent = item.name;
                         itemInfo.textContent = item.aboutMini;
 
                         if (order[pos] > 1) {
-                            itemPrice.textContent = `${item.price * order[pos]}$ in total. ${item.price}$ for each.`;
+                            itemPrice.textContent = `${(item.price * order[pos]).toFixed(2)}$ in total. ${item.price}$ for each.`;
                         } else {
                             itemPrice.textContent = `${item.price}$ in total.`;
                         }
@@ -120,6 +125,11 @@ async function obj() {
                     }
                 }
             }
+            let orderTotal = document.createElement('h2');
+            orderTotal.classList.add('order-total');
+            specificPageContainer.appendChild(orderTotal);
+            getOrderTotal();
+
         } else {
             clearBtn.style.display = 'none';
             let emptyOrder = document.createElement('p');
@@ -129,6 +139,17 @@ async function obj() {
     }
 };
 
+let total = 0;
+
+function getOrderTotal() {
+    total = 0;
+    let orderTotal = document.querySelector('.order-total');
+    let prices = document.querySelectorAll('.item-price');
+    prices.forEach(price => {
+        total += parseFloat(price.textContent.slice(0, price.textContent.indexOf('$')));
+    });
+    orderTotal.textContent = `Total order is ${total.toFixed(2)}$`;
+}
 
 function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
     let inputWrapper = document.createElement('div');
@@ -145,10 +166,11 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
                 let newOrder = orderToObject(localStorage.order);
                 newOrder[itemId] -= 1;
                 if (newOrder[itemId] > 1) {
-                    priceField.textContent = `${price * newOrder[itemId]}$ in total. ${price}$ for each.`;
+                    priceField.textContent = `${(price * newOrder[itemId]).toFixed(2)}$ in total. ${price}$ for each.`;
                 } else {
                     priceField.textContent = `${price}$ in total.`;
                 }
+                getOrderTotal();
 
                 localStorage.order = orderToString(newOrder);
             }
@@ -161,10 +183,12 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
             let newOrder = orderToObject(localStorage.order);
             newOrder[itemId] += 1;
             if (newOrder[itemId] > 1) {
-                priceField.textContent = `${price * newOrder[itemId]}$ in total. ${price}$ for each.`;
+                priceField.textContent = `${(price * newOrder[itemId]).toFixed(2)}$ in total. ${price}$ for each.`;
             } else {
                 priceField.textContent = `${price}$ in total.`;
             }
+            getOrderTotal();
+
             localStorage.order = orderToString(newOrder);
         }
     })
@@ -189,6 +213,7 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
             delete newOrder[itemId];
             localStorage.order = orderToString(newOrder);
             deleteButton.parentElement.remove();
+            getOrderTotal();
         })
         appendTo.appendChild(deleteButton);
     } else {
@@ -276,6 +301,7 @@ function clearOrder() {
         specificPageContainer.firstChild.remove();
         localStorage.clear();
     }
+    total = 0;
     clearBtn.style.display = 'none';
     let emptyOrder = document.createElement('p');
     emptyOrder.textContent = 'Your order is empty';
