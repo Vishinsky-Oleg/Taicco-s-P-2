@@ -7,6 +7,8 @@ const gulp = require("gulp"),
     sourcemaps = require("gulp-sourcemaps"),
     concat = require("gulp-concat"),
     uglify = require("gulp-uglify-es").default,
+    imagemin = require("gulp-imagemin"),
+    changed = require("gulp-changed"),
     lineec = require("gulp-line-ending-corrector");
 
 const root = "../"; //Root folder
@@ -36,10 +38,16 @@ const cssSRC = [
     root + "src/css/style.css" //compiled
 ];
 
+const imgSRC = root + 'src/image/*',
+    imgDist = root + 'dist/image';
+
+
 function css() {
     return gulp
         .src([scss + "style.scss"])
-        .pipe(sourcemaps.init({ loadMaps: true }))
+        .pipe(sourcemaps.init({
+            loadMaps: true
+        }))
         .pipe(
             sass({
                 outputStyle: "expanded",
@@ -54,7 +62,10 @@ function css() {
 function concatCSS() {
     return gulp
         .src(cssSRC)
-        .pipe(sourcemaps.init({ loadMaps: true, largeFile: true }))
+        .pipe(sourcemaps.init({
+            loadMaps: true,
+            largeFile: true
+        }))
         .pipe(concat("style.min.css"))
         .pipe(cleanCSS())
         .pipe(sourcemaps.write("./"))
@@ -72,6 +83,24 @@ function javascript() {
         .pipe(gulp.dest(jsdist));
 }
 
+function imgmin() {
+    return gulp
+        .src(imgSRC)
+        .pipe(changed(imgDist))
+        .pipe(imagemin([
+            imagemin.gifsicle({
+                interlaced: true
+            }),
+            imagemin.mozjpeg({
+                progressive: true
+            }),
+            imagemin.optipng({
+                optimizationLevel: 5
+            })
+        ]))
+        .pipe(gulp.dest(imgDist));
+}
+
 function watch() {
     browserSync.init({
         server: {
@@ -80,6 +109,7 @@ function watch() {
     });
     gulp.watch(styleWatchFiles, gulp.series([css, concatCSS]));
     gulp.watch(jsSRC, javascript);
+    gulp.watch(imgSRC, imgmin);
     gulp.watch([jsWatchFiles, styleWatchFiles, mainWatchFiles]).on(
         "change",
         browserSync.reload
@@ -89,6 +119,7 @@ function watch() {
 exports.css = css;
 exports.concatCSS = concatCSS;
 exports.javascript = javascript;
+exports.imgmin = imgmin;
 exports.watch = watch;
 
 const build = gulp.parallel(watch);

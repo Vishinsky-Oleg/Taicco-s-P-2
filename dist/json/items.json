@@ -1,0 +1,109 @@
+[{
+        "name": "Pizza",
+        "type": "main",
+        "id": "1111",
+        "aboutMini": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sed illo cumque, voluptatum quasi delectus.",
+        "about": "Pizza is a savory dish of Italian origin consisting of a usually round, flattened base of leavened wheat-based dough topped with tomatoes, cheese, and often various other ingredients, which is then baked at a high temperature, traditionally in a wood-fired oven.",
+        "price": 12.99,
+        "imagePath": ["pizza.jpg"]
+    },
+    {
+        "name": "Shrimp",
+        "type": "main",
+        "id": "1112",
+        "aboutMini": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sed illo cumque, voluptatum quasi delectus.",
+        "about": "Shrimp are decapod crustaceans with elongated bodies and a primarily swimming mode of locomotion – most commonly Caridea and Dendrobranchiata. More narrow definitions may be restricted to Caridea, to smaller species of either group or to only the marine species. ",
+        "price": 5.60,
+        "imagePath": ["shrimp.jpg"]
+    },
+    {
+        "name": "Salmon #1",
+        "type": "main",
+        "id": "1113",
+        "aboutMini": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sed illo cumque, voluptatum quasi delectus.",
+        "about": "Tender garlic butter baked salmon with crispy roast potatoes, asparagus and a delicious garlic butter sauce! all baked on a sheet pan for an easy dinner.",
+        "price": 12.30,
+        "imagePath": ["salmon-1.jpg"]
+    },
+    {
+        "name": "Salmon #2",
+        "type": "main",
+        "id": "1114",
+        "aboutMini": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci sed illo cumque, voluptatum quasi delectus.",
+        "about": "Tender garlic butter baked salmon with crispy roast potatoes, asparagus and a delicious garlic butter sauce! all baked on a sheet pan for an easy dinner.",
+        "price": 11.30,
+        "imagePath": ["salmon-2.jpg"]
+    },
+    {
+        "name": "Asparagus",
+        "type": "main",
+        "id": "1115",
+        "about": "Asparagus, or garden asparagus, folk name sparrow grass, scientific name Asparagus officinalis, is a perennial flowering plant species in the genus Asparagus. Its young shoots are used as a spring vegetable. It was once classified in the lily family, like the related Allium species, onions and garlic.",
+        "price": 19.25,
+        "imagePath": ["asparagus.jpg"]
+    },
+    {
+        "name": "Salad #1",
+        "type": "salad",
+        "id": "2222",
+        "about": "Make this salad for your next picnic, and it’ll be a guaranteed hit. A tahini miso dressing gives it a creamy umami coating, while peaches add juicy pops of sweetness. I finish it with toasted pepitas for crunch.",
+        "price": 5.50,
+        "imagePath": ["salad-1.jpg"]
+    },
+    {
+        "name": "Salad #2",
+        "type": "salad",
+        "id": "2223",
+        "about": "You won’t miss the bacon in this lightened-up take on classic broccoli salad. Smoky roasted nuts take its place, adding delectable savory bites. A lightly creamy, sweet & tangy dressing takes the whole thing over the top.",
+        "price": 4.50,
+        "imagePath": ["salad-2.jpg"]
+    },
+    {
+        "name": "Salad #3",
+        "type": "salad",
+        "id": "2224",
+        "about": "As soon as the temperature starts to dip in the fall, I look forward to making this salad. Made with just 7 ingredients, it’s a breeze to put together, but a bright lemon dressing, Parmesan cheese, pine nuts, and dried cranberries make it zippy, fresh, and satisfying.",
+        "price": 4.20,
+        "imagePath": ["salad-3.jpg"]
+    },
+    {
+        "name": "Salad #4",
+        "type": "salad",
+        "id": "2225",
+        "about": "As its name suggests, this one is a breeze to make. Just whisk together the zippy lemon dressing at the bottom of a big bowl, add the other ingredients, and toss to create a heavenly tangy/creamy/crunchy/fresh summer combo.",
+        "price": 6.10,
+        "imagePath": ["salad-4.jpg"]
+    },
+    {
+        "name": "Cocktail",
+        "type": "drinks",
+        "id": "3333",
+        "about": "A cocktail is an alcoholic mixed drink, which is either a combination of spirits, or one or more spirits mixed with other ingredients such as fruit juice, flavored syrup, or cream. There are various types of cocktails, based on the number and kind of ingredients added.",
+        "price": 4.10,
+        "imagePath": ["cocktail.jpg"]
+    },
+    {
+        "name": "Green Tea",
+        "type": "drinks",
+        "id": "3334",
+        "about": "Green tea is a type of tea that is made from Camellia sinensis leaves and buds that have not undergone the same withering and oxidation process used to make oolong teas and black teas. Green tea originated in China, but its production and manufacture has spread to other countries in East Asia.",
+        "price": 2.50,
+        "imagePath": ["green-tea.jpg"]
+    },
+    {
+        "name": "Coffee",
+        "type": "drinks",
+        "id": "3335",
+        "about": "Coffee is a brewed drink prepared from roasted coffee beans, the seeds of berries from certain Coffea species. When coffee berries turn from green to bright red in color – indicating ripeness – they are picked, processed, and dried. Dried coffee seeds are roasted to varying degrees, depending on the desired flavor.",
+        "price": 3.50,
+        "imagePath": ["coffee.jpg"]
+    },
+    {
+        "name": "Smoothie",
+        "type": "drinks",
+        "id": "3336",
+        "about": "A smoothie is a drink made from pureed raw fruit and/or vegetables, typically using a blender. A smoothie often has a liquid base such as water, fruit juice, plant milk, and sometimes dairy products, such as milk, yogurt, ice cream or cottage cheese.",
+        "price": 6.60,
+        "imagePath": ["smoothie.jpg"]
+    }
+]
