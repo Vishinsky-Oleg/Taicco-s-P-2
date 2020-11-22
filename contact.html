@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taicco's</title>
     <link rel="stylesheet" href="./dist/css/style.min.css">
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.css" />
     <script src="./dist/js/main.js" defer></script>
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.2/mapquest.js"></script>
 
 </head>
 
@@ -41,15 +43,56 @@
     <main>
 
 
-        <h2 class="to-upper main-header">Drinks</h2>
-        <article class="specific-items container">
-
-            </section>
+        <h2 class="to-upper main-header">About us</h2>
+        <article class="container">
+            <h3>Our address:</h3>
+            <p>62 K2 Pererva st-t</p>
+            <div id="map"></div>
+            <h3>Our Phone:</h3>
+            <p>+7 (999) 999-9999</p>
+        </article>
     </main>
 
     <footer class="container">
         <p class="col-sm-5">Developed by Oleg Vyshinsky</p>
     </footer>
+    <script>
+        var L;
+
+        window.onload = function () {
+            L.mapquest.key = 'yGHC0619d6Xh4aTyUF9hhDJc3VJBRCuL';
+
+            // 'map' refers to a <div> element with the ID map
+            var map = L.mapquest.map('map', {
+                center: [55.664431, 37.765068],
+                layers: L.mapquest.tileLayer('map'),
+                zoom: 12
+            });
+
+            map.addControl(L.mapquest.control({
+                position: 'topright'
+            }));
+
+            let directionsControl = L.mapquest.directionsControl({
+                endInput: {
+                    disabled: true,
+                    geolocation: {
+                        enabled: false
+                    }
+                },
+                addDestinationButton: {
+                    enabled: false
+                }
+            }).addTo(map);
+
+            directionsControl.setFirstDestination({
+                latLng: {
+                    lat: 55.664431,
+                    lng: 37.765068
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
