@@ -1,12 +1,30 @@
 const mainHeader = document.querySelector('.main-header');
-const specificPageContainer = document.querySelector('.specific-items');
-const mainPageContainer = document.querySelector('.specialities-container');
-const clearBtn = document.querySelector('.clear-order');
+const specificPageContainer = document.querySelector('.spec-items');
+const mainPageContainer = document.querySelector('.spec-container');
+const clearBtn = document.querySelector('.order-deleteAll-button');
+const addedLabel = document.querySelector('.added');
+const ifOrderIsEmpty = document.querySelector('.order-empty');
+
+if (addedLabel) {
+    addedLabel.addEventListener('animationend', () => {
+        addedLabel.classList.remove('animate');
+    });
+}
 
 if (clearBtn) {
     clearBtn.addEventListener('click', clearOrder);
 }
-
+const navBarList = document.querySelector('.navbar-list');
+const navBarIcon = document.querySelector('.navbar-icon');
+navBarIcon.addEventListener('click', () => {
+    navBarIcon.classList.toggle('opened');
+    navBarList.classList.toggle('opened');
+});
+const navBarFolding = document.querySelector('.navbar-list--folding');
+const navBarFolded = document.querySelector('.navbar-list--folded');
+navBarFolding.addEventListener('click', () => {
+    navBarFolded.classList.toggle('opened');
+});
 
 
 (async function () {
@@ -18,25 +36,28 @@ if (clearBtn) {
             for (item of jsonFile) {
                 if (item.id === '1111' || item.id === '1112' || item.id === '1113' || item.id === '1114') {
                     let itemWrapper = document.createElement('div');
-                    let imageWrapper = document.createElement('div');
+                    // let imageWrapper = document.createElement('div');
                     let infoWrapper = document.createElement('div');
                     let itemName = document.createElement('h4');
                     let itemInfo = document.createElement('p');
                     let itemPrice = document.createElement('h6');
                     let itemImage = document.createElement('img');
 
-                    imageWrapper.appendChild(itemImage);
+                    // imageWrapper.appendChild(itemImage);
                     infoWrapper.appendChild(itemName);
                     infoWrapper.appendChild(itemInfo);
                     infoWrapper.appendChild(itemPrice);
                     itemWrapper.appendChild(infoWrapper);
-                    itemWrapper.appendChild(imageWrapper);
+                    itemWrapper.appendChild(itemImage);
 
+                    itemWrapper.classList.add('spec-item', 'col-sm-12', 'row', 'col-xl-6');
+                    itemImage.classList.add('spec-item--image', 'col-sm-6');
+                    infoWrapper.classList.add('spec-item--info', 'col-sm-6');
                     itemName.textContent = item.name;
                     itemInfo.textContent = item.aboutMini;
-                    itemPrice.textContent = item.price;
+                    itemPrice.textContent = 'Price: ' + item.price + '$';
                     itemImage.src = './dist/image/' + item.imagePath;
-                    itemImage.alt = item.name;
+                    itemImage.alt = item.name + ' image';
                     createOrderButton(item.id, infoWrapper);
 
                     mainPageContainer.appendChild(itemWrapper);
@@ -56,29 +77,32 @@ if (clearBtn) {
                 if (item.type === type.toLowerCase()) {
                     ++nthChild;
                     let itemWrapper = document.createElement('div');
-                    let imageWrapper = document.createElement('div');
+                    // let imageWrapper = document.createElement('div');
                     let infoWrapper = document.createElement('div');
                     let itemName = document.createElement('h4');
                     let itemInfo = document.createElement('p');
                     let itemPrice = document.createElement('h6');
                     let itemImage = document.createElement('img');
 
-                    imageWrapper.appendChild(itemImage);
+                    itemWrapper.classList.add('spec-item', 'col-md-12', 'row');
+                    itemImage.classList.add('spec-item--image-full', 'col-md-6');
+                    infoWrapper.classList.add('spec-item--info-full', 'col-md-6');
+                    // imageWrapper.appendChild(itemImage);
                     infoWrapper.appendChild(itemName);
                     infoWrapper.appendChild(itemInfo);
                     infoWrapper.appendChild(itemPrice);
                     if (nthChild % 2 === 0) {
                         itemWrapper.appendChild(infoWrapper);
-                        itemWrapper.appendChild(imageWrapper);
+                        itemWrapper.appendChild(itemImage);
                     } else {
-                        itemWrapper.appendChild(imageWrapper);
+                        itemWrapper.appendChild(itemImage);
                         itemWrapper.appendChild(infoWrapper);
                     }
 
 
                     itemName.textContent = item.name;
                     itemInfo.textContent = item.about;
-                    itemPrice.textContent = item.price;
+                    itemPrice.textContent = 'Price: ' + item.price + '$';
                     itemImage.src = './dist/image/' + item.imagePath;
                     itemImage.alt = item.name;
                     createOrderButton(item.id, infoWrapper);
@@ -95,18 +119,26 @@ if (clearBtn) {
                 for (let pos in order) {
                     for (item of jsonFile) {
                         if (item.id === pos) {
-                            let imageWrapper = document.createElement('div');
+                            let infoWrapper = document.createElement('div');
                             let itemWrapper = document.createElement('div');
                             let itemName = document.createElement('h4');
                             let itemInfo = document.createElement('p');
                             let itemPrice = document.createElement('h6');
                             let itemImage = document.createElement('img');
 
-                            imageWrapper.appendChild(itemImage);
-                            itemWrapper.appendChild(imageWrapper);
-                            itemWrapper.appendChild(itemName);
-                            itemWrapper.appendChild(itemInfo);
-                            itemWrapper.appendChild(itemPrice);
+                            itemWrapper.classList.add('spec-item', 'spec-item-order', 'col-md-6', 'col-lg-4', 'col-xl-3');
+                            itemImage.classList.add('spec-item--image-order', 'col-md-12');
+                            infoWrapper.classList.add('spec-item--info-order', 'col-md-12');
+
+                            itemWrapper.appendChild(itemImage);
+                            itemWrapper.appendChild(infoWrapper);
+                            infoWrapper.appendChild(itemName);
+                            if (item.aboutMini) {
+                                infoWrapper.appendChild(itemInfo);
+                                itemInfo.textContent = item.aboutMini;
+                            }
+
+                            infoWrapper.appendChild(itemPrice);
 
                             itemPrice.classList.add('item-price');
 
@@ -121,7 +153,7 @@ if (clearBtn) {
 
                             itemImage.src = './dist/image/' + item.imagePath;
                             itemImage.alt = item.name;
-                            createOrderButton(item.id, itemWrapper, order[pos], itemPrice, item.price);
+                            createOrderButton(item.id, infoWrapper, order[pos], itemPrice, item.price);
 
                             specificPageContainer.appendChild(itemWrapper);
                         }
@@ -137,9 +169,7 @@ if (clearBtn) {
 
             } else {
                 clearBtn.style.display = 'none';
-                let emptyOrder = document.createElement('p');
-                emptyOrder.textContent = 'Your order is empty';
-                specificPageContainer.appendChild(emptyOrder);
+                ifOrderIsEmpty.style.display = 'block';
             }
         }
     }
@@ -156,6 +186,9 @@ function createFormElements(appendTo) {
     let emailLabel = document.createElement('label');
     let emailInput = document.createElement('input');
     let submitBtn = document.createElement('button');
+
+    form.classList.add('order-form', 'col-12');
+
 
     // form.setAttribute('novalidate', '');
     form.action = '#';
@@ -244,6 +277,7 @@ function createFormElements(appendTo) {
 function getOrderTotal() {
     total = 0;
     let orderTotal = document.querySelector('.order-total');
+    orderTotal.classList.add('col-12');
     let prices = document.querySelectorAll('.item-price');
     prices.forEach(price => {
         total += parseFloat(price.textContent.slice(0, price.textContent.indexOf('$')));
@@ -257,13 +291,25 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
     let input = document.createElement('input');
     let plusBtn = document.createElement('span');
 
+    inputWrapper.classList.add('input');
+    minusBtn.classList.add('input-minus');
+    plusBtn.classList.add('input-plus');
+    input.classList.add('input-field');
+
 
     minusBtn.textContent = '-';
     minusBtn.addEventListener('click', () => {
+        // Only if value of input not equal to 1
         if (minusBtn.nextElementSibling.value != '1') {
             minusBtn.nextElementSibling.value = parseInt(minusBtn.nextElementSibling.value) - 1;
+            // OrderedValue is true if function used with optional arguments , i.e in order page
             if (orderedValue) {
                 let newOrder = orderToObject(localStorage.order);
+                if (addedLabel) {
+                    addedLabel.classList.add('animate');
+                    addedLabel.style.visibility = 'visible';
+                    addedLabel.textContent = 'Removed';
+                }
                 newOrder[itemId] -= 1;
                 if (newOrder[itemId] > 1) {
                     priceField.textContent = `${(price * newOrder[itemId]).toFixed(2)}$ in total. ${price}$ for each.`;
@@ -281,6 +327,11 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
         plusBtn.previousElementSibling.value = parseInt(plusBtn.previousElementSibling.value) + 1;
         if (orderedValue) {
             let newOrder = orderToObject(localStorage.order);
+            if (addedLabel) {
+                addedLabel.classList.add('animate');
+                addedLabel.style.visibility = 'visible';
+                addedLabel.textContent = 'Added';
+            }
             newOrder[itemId] += 1;
             if (newOrder[itemId] > 1) {
                 priceField.textContent = `${(price * newOrder[itemId]).toFixed(2)}$ in total. ${price}$ for each.`;
@@ -306,23 +357,37 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
 
     appendTo.appendChild(inputWrapper);
     if (orderedValue) {
+        // creating delete button for order page
         let deleteButton = document.createElement('button');
         deleteButton.textContent = "Delete";
         deleteButton.addEventListener('click', () => {
+
             let newOrder = orderToObject(localStorage.order);
             delete newOrder[itemId];
             localStorage.order = orderToString(newOrder);
-            deleteButton.parentElement.remove();
+            // clear everythink if there is no more items
+            if (localStorage.order === '') {
+                clearOrder();
+            }
+            deleteButton.parentElement.parentElement.remove();
             getOrderTotal();
         })
         appendTo.appendChild(deleteButton);
     } else {
+        // creating add button for order page
         let button = document.createElement('button');
-        button.textContent = "Order";
+        button.textContent = "Add to order";
+        button.classList.add('to-upper');
         button.value = itemId;
         appendTo.appendChild(button);
         button.addEventListener('click', () => {
+            button.classList.add('animate');
+            if (addedLabel) {
+                addedLabel.classList.add('animate');
+                addedLabel.style.visibility = 'visible';
+            }
             let inputValue = parseInt(button.previousSibling.children[1].value);
+
             if (localStorage.order) {
                 if (inputValue > 1) {
                     localStorage.order += ',' + button.value + 'x' + inputValue;
@@ -337,6 +402,9 @@ function createOrderButton(itemId, appendTo, orderedValue, priceField, price) {
                     localStorage.setItem('order', `${button.value}`);
                 }
             }
+        });
+        button.addEventListener('animationend', () => {
+            button.classList.remove('animate');
         });
     }
 };
@@ -403,8 +471,5 @@ function clearOrder() {
     }
     total = 0;
     clearBtn.style.display = 'none';
-    let emptyOrder = document.createElement('p');
-    emptyOrder.textContent = 'Your order is empty';
-    specificPageContainer.appendChild(emptyOrder);
+    ifOrderIsEmpty.style.display = 'block';
 }
-

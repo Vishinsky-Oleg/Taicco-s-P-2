@@ -3,3 +3,119 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: Kanit;
+    src: url(../fonts/Kanit-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: Kanit;
+    src: url(../fonts/Kanit-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: Kanit;
+    src: url(../fonts/Kanit-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: Kanit;
+    src: url(../fonts/Kanit-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: Norican;
+    src: url(../fonts/Norican-Regular.ttf);
+    font-weight: 400;
+}
+
+@mixin bg($class) {
+    $var: str-slice(#{$class}, 2);
+    background: url("../image/#{$var}1.jpg");
+
+}
+
+$mfont: Norican,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+Oxygen,
+Ubuntu,
+Cantarell,
+'Open Sans',
+'Helvetica Neue',
+sans-serif;
+$sfont: Kanit,
+-apple-system,
+BlinkMacSystemFont,
+'Segoe UI',
+Roboto,
+Oxygen,
+Ubuntu,
+Cantarell,
+'Open Sans',
+'Helvetica Neue',
+sans-serif;
+$bgcolor: #f5f4f0;
+$mcolor: #ffffff;
+$scolor: #1d1d1d;
+$tcolor: #d39a1e;
+
+body {
+    background: $bgcolor;
+    color: $scolor;
+}
+
+@keyframes orderBtn {
+    0% {
+        color: $tcolor;
+        background: transparent;
+        border: 2px solid $tcolor;
+    }
+
+    100% {
+        color: $mcolor;
+        background: $tcolor;
+        border: 2px solid $mcolor;
+    }
+}
+
+@keyframes orderBtnRev {
+    0% {
+        color: $mcolor;
+        background: $tcolor;
+        border: 2px solid $mcolor;
+    }
+
+    100% {
+        color: $tcolor;
+        background: transparent;
+        border: 2px solid $tcolor;
+    }
+}
+
+@keyframes addedButton {
+    0% {
+        transform: translate(-50%, -100%);
+    }
+
+    100% {
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes addedButtonRev {
+    0% {
+        transform: translate(-50%, -50%);
+    }
+
+    100% {
+        transform: translate(-50%, -100%);
+    }
+}

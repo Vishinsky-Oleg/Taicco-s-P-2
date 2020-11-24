@@ -13,20 +13,19 @@
 </head>
 
 <body>
-    <header>
+    <header class="order">
         <div class="logo">
             <a href="./index.html" class="logo-link">
-                <h2 class="logo-heading">Taicco's</h2>
-                <div class="logo-heading--add to-upper">Restaurant</div>
+                <img src="/dist/image/logo.png" alt="Taicco's Restaurant" class="logo-img">
             </a>
-        </div>
-
-        <nav class="navbar">
             <div class="navbar-icon">
-                <span class="navbar-icon--stick"></span>
+                <span class="navbar-icon--top"></span>
+                <span class="navbar-icon--bottom"></span>
             </div>
+        </div>
+        <nav class="navbar">
             <ul class="navbar-list">
-                <li class="to-upper">Our menu &bull;
+                <li class="to-upper navbar-list--folding">Our menu
                     <ul class="navbar-list--folded">
                         <li class="to-upper"><a href="./hotmeals.html">Hot food</a></li>
                         <li class="to-upper"><a href="./salads.html">Salads</a></li>
@@ -35,25 +34,34 @@
                 </li>
                 <li class="to-upper"><a href="./about.html">About us &bull;</a></li>
                 <li class="to-upper"><a href="./contact.html">Contact &bull;</a></li>
-                <li class="to-upper"><a href="./order.html">Order</a></li>
+                <li class="to-upper"><a href="./order.html">Order &bull;</a></li>
             </ul>
         </nav>
+        <h2 class="to-upper main-header greetings-add-spec">About us</h2>
     </header>
 
     <main>
 
 
-        <h2 class="to-upper main-header">About us</h2>
-        <article class="container">
-            <h3>Our address:</h3>
-            <p>62 K2 Pererva st-t</p>
-            <div id="map"></div>
-            <h3>Our Phone:</h3>
-            <p>+7 (999) 999-9999</p>
+
+        <article class="container spec-container row">
+            <div class="col-md-6 contacts">
+                <h3 class="contacts-head">Our address:</h3>
+                <p class="contacts-para">62 K2 Pererva st-t</p>
+                <div id="map"></div>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.388753959531!2d37.76390641567992!3d55.6648396805299!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x414ab43d0fb7b88d%3A0xa0171eaed7e85b4a!2sUlitsa%20Pererva%2C%2062%2C%20Moskva%2C%20109451!5e0!3m2!1sen!2sru!4v1606207526146!5m2!1sen!2sru"
+                    width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
+            </div>
+            <div class="col-md-6 contacts">
+                <h3 class="contacts-head">Our Phone:</h3>
+                <p class="contacts-para">+7 (999) 999-9999</p>
+            </div>
         </article>
     </main>
 
-    <footer class="container">
+    <footer class="container-fluid">
         <p class="col-sm-5">Developed by Oleg Vyshinsky</p>
     </footer>
     <script>

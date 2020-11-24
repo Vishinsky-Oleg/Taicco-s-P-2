@@ -1,0 +1,150 @@
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 576px) {
+    .logo {
+        width: 40%;
+        text-align: left;
+        display: inline-block;
+
+        &-img {
+            width: 50%;
+            padding-top: 20px;
+            padding-left: 20px;
+        }
+    }
+
+    .greetings {
+        &-heading {
+            display: block;
+            color: rgba($mcolor, $alpha: 0.9);
+            padding: 3rem 0 0 0;
+            text-align: center;
+            font-family: $mfont;
+            font-size: 4rem;
+        }
+
+        &-add,
+        &-add-spec {
+            padding: 1rem 0;
+        }
+
+        &-add-spec {
+            padding-top: 3rem;
+            font-size: 2.5rem;
+        }
+    }
+
+    .navbar {
+        &-icon {
+            display: none;
+        }
+
+        &-list {
+            all: unset;
+            font-family: $sfont;
+            font-weight: 500;
+            font-size: 1rem;
+            color: rgba($color: $mcolor, $alpha: 0.8);
+            position: absolute;
+            top: 20px;
+            right: 15px;
+
+            // padding-top: 15px;
+            &>li:nth-child(4) {
+                border-radius: 10px;
+            }
+
+            &>li {
+                display: inline-block;
+            }
+
+            &.opened {
+                width: auto;
+            }
+
+            &--folded {
+                // display: none;
+                background-color: rgba($scolor, $alpha: 0.9);
+                position: absolute;
+                top: 49px;
+                left: 10px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                border-top-right-radius: 10px;
+                z-index: 10;
+
+                &>li {
+                    transform: translateX(20px);
+                    font-size: 1rem;
+                    transition: all 0.2s ease-in-out;
+                    border-top: 1px solid $mcolor;
+                    width: 130px;
+                }
+
+                &.opened {
+                    // display: block;
+                    height: 150px;
+
+                    & li {
+                        transform: translateX(0px);
+                    }
+                }
+            }
+        }
+    }
+
+    .intro {
+        &-container {
+            padding: 0;
+        }
+
+        &-image {
+            padding: 0;
+        }
+    }
+
+    .spec {
+        &-heading {
+            line-height: 3.5;
+        }
+    }
+}
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+    .navbar {
+        &-list {
+            &-contrast {
+                border-top-left-radius: 13px;
+                border-radius: 10px;
+                background-color: rgba($scolor, $alpha: 0.6);
+
+                &>li {
+                    transition: all 0.3s ease-in;
+                    border-radius: 10px;
+
+                    &:hover {
+                        background-color: rgba($scolor, $alpha: 0.8);
+
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {}
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+    .intro {
+        &-para--xl {
+            padding: 0 50px;
+        }
+
+    }
+}

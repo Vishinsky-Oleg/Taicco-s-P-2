@@ -11,20 +11,19 @@
 </head>
 
 <body>
-    <header>
+    <header class="index">
         <div class="logo">
             <a href="./index.html" class="logo-link">
-                <h2 class="logo-heading">Taicco's</h2>
-                <div class="logo-heading--add to-upper">Restaurant</div>
+                <img src="/dist/image/logo.png" alt="Taicco's Restaurant" class="logo-img">
             </a>
-        </div>
-
-        <nav class="navbar">
             <div class="navbar-icon">
-                <span class="navbar-icon--stick"></span>
+                <span class="navbar-icon--top"></span>
+                <span class="navbar-icon--bottom"></span>
             </div>
+        </div>
+        <nav class="navbar">
             <ul class="navbar-list">
-                <li class="to-upper">Our menu &bull;
+                <li class="to-upper navbar-list--folding">Our menu
                     <ul class="navbar-list--folded">
                         <li class="to-upper"><a href="./hotmeals.html">Hot food</a></li>
                         <li class="to-upper"><a href="./salads.html">Salads</a></li>
@@ -33,39 +32,46 @@
                 </li>
                 <li class="to-upper"><a href="./about.html">About us &bull;</a></li>
                 <li class="to-upper"><a href="./contact.html">Contact &bull;</a></li>
-                <li class="to-upper"><a href="./order.html">Order</a></li>
+                <li class="to-upper"><a href="./order.html">Order &bull;</a></li>
             </ul>
         </nav>
+        <h1 class="greetings-heading">Taicco's</h1>
+        <h2 class="to-upper greetings-add main-header">ITalian specialities</h2>
     </header>
 
     <main>
-        <section class="greetings">
-            <h1 class="greetings-heading">Taicco's</h1>
-            <h2 class="to-upper greetings-add main-header">ITalian specialities</h2>
-            <article class="greetings-intro container">
-                <h2 class="greetings-intro-heading">Reservations</h2>
-                <p
-                    class="greetings-intro-para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, natus ad accusamus possimus dolore fugit?</p>
-                <buttton class="greetings-intro-btn to-upper">Book a table</buttton>
-                <img src="./dist/image/intro-1.jpg" alt="intro-image-1" class="greetings-intro-image">
-                <img src="./dist/image/intro-2.jpg" alt="intro-image-2" class="greetings-intro-image">
-                <h2 class="greetings-intro-heading">About</h2>
-                <p
-                    class="greetings-intro-para">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi magnam suscipit a corrupti culpa reiciendis libero unde illo! Suscipit sequi, molestiae quam impedit ad ipsam quae eos dicta maiores pariatur.</p>
-            </article>
+        <section class="intro container">
+
+            <div class="row">
+                <div class="col-md-5 col-sm-6  col-lg-4 col-xl-3  intro-container">
+                    <h2 class="intro-heading">Reservations</h2>
+                    <p
+                        class="intro-para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque, natus ad accusamus possimus dolore fugit?</p>
+                    <button class="intro-btn to-upper">Book a table</button>
+                </div>
+                <img src="./dist/image/intro-1.jpg" alt="intro-image-1" class="intro-image col-sm-6 col-md-7 col-lg-8">
+                <img src="./dist/image/intro-2.jpg" alt="intro-image-2"
+                    class="intro-image col-sm-6 col-md-5 col-lg-4 col-xl-3  order-1 order-sm-0">
+                <div class="col-md-7 col-sm-6 col-lg-8  order-0 order-sm-1  intro-container">
+                    <h2 class="intro-heading">About</h2>
+                    <p
+                        class="intro-para intro-para--xl">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi magnam suscipit a corrupti culpa reiciendis libero unde illo! Suscipit sequi, molestiae quam impedit ad ipsam quae eos dicta maiores pariatur.</p>
+                </div>
+            </div>
         </section>
 
-        <section class="specialities">
-            <h3 class="to-upper specialities-heading">our specialities</h3>
-            <article class="specialities-container container">
+        <section class="spec">
+            <h3 class="to-upper spec-heading">our specialities</h3>
+            <article class="spec-container container row">
 
             </article>
         </section>
     </main>
 
-    <footer class="container">
+    <footer class="container-fluid">
         <p class="col-sm-5">Developed by Oleg Vyshinsky</p>
     </footer>
+    <div class="added">Added</div>
 </body>
 
 </html>
