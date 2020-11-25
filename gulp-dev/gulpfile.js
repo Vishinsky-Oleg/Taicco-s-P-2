@@ -26,15 +26,15 @@ const jsSRC = [
     //order in which js files will be processed
     // vendor + "jquery-3.5.1.slim.min.js",
     // vendor + "bootstrap.bundle.min.js",
-    // vendor + "slick.min.js",
-    js + "main.js",
+    vendor + "wow.min.js",
+    js + "main.js"
 ];
 
 const cssSRC = [
     //order in which cs files will be processed
     // root + "src/css/vendor/slick.css",
-    // root + "src/css/vendor/slick-theme.css",
     root + "src/css/vendor/bootstrap-grid.css",
+    root + "src/css/vendor/animate.css",
     root + "src/css/style.css" //compiled
 ];
 

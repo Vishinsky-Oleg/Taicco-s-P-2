@@ -5,6 +5,8 @@ const clearBtn = document.querySelector('.order-deleteAll-button');
 const addedLabel = document.querySelector('.added');
 const ifOrderIsEmpty = document.querySelector('.order-empty');
 
+
+
 if (addedLabel) {
     addedLabel.addEventListener('animationend', () => {
         addedLabel.classList.remove('animate');
@@ -50,7 +52,7 @@ navBarFolding.addEventListener('click', () => {
                     itemWrapper.appendChild(infoWrapper);
                     itemWrapper.appendChild(itemImage);
 
-                    itemWrapper.classList.add('spec-item', 'col-sm-12', 'row', 'col-xl-6');
+                    itemWrapper.classList.add('spec-item', 'col-sm-12', 'row', 'col-xl-6','wow', 'fadeInUp');
                     itemImage.classList.add('spec-item--image', 'col-sm-6');
                     infoWrapper.classList.add('spec-item--info', 'col-sm-6');
                     itemName.textContent = item.name;
@@ -84,7 +86,7 @@ navBarFolding.addEventListener('click', () => {
                     let itemPrice = document.createElement('h6');
                     let itemImage = document.createElement('img');
 
-                    itemWrapper.classList.add('spec-item', 'col-md-12', 'row');
+                    // itemWrapper.classList.add('spec-item', 'col-md-12', 'row', 'wow', 'fadeInUp');
                     itemImage.classList.add('spec-item--image-full', 'col-md-6');
                     infoWrapper.classList.add('spec-item--info-full', 'col-md-6');
                     // imageWrapper.appendChild(itemImage);
@@ -94,9 +96,11 @@ navBarFolding.addEventListener('click', () => {
                     if (nthChild % 2 === 0) {
                         itemWrapper.appendChild(infoWrapper);
                         itemWrapper.appendChild(itemImage);
+                        itemWrapper.classList.add('spec-item', 'col-md-12', 'row', 'wow', 'fadeInLeft');
                     } else {
                         itemWrapper.appendChild(itemImage);
                         itemWrapper.appendChild(infoWrapper);
+                        itemWrapper.classList.add('spec-item', 'col-md-12', 'row', 'wow', 'fadeInRight');
                     }
 
 
@@ -126,7 +130,7 @@ navBarFolding.addEventListener('click', () => {
                             let itemPrice = document.createElement('h6');
                             let itemImage = document.createElement('img');
 
-                            itemWrapper.classList.add('spec-item', 'spec-item-order', 'col-md-6', 'col-lg-4', 'col-xl-3');
+                            itemWrapper.classList.add('spec-item', 'spec-item-order', 'col-md-6', 'col-lg-4', 'col-xl-3', 'wow', 'fadeInUp');
                             itemImage.classList.add('spec-item--image-order', 'col-md-12');
                             infoWrapper.classList.add('spec-item--info-order', 'col-md-12');
 
@@ -173,6 +177,7 @@ navBarFolding.addEventListener('click', () => {
             }
         }
     }
+    new WOW().init();
 })();
 
 let total = 0;
